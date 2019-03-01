@@ -7,7 +7,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using WebApplication1.Models;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.Extensions.FileProviders;
+using System.IO;
 
 namespace WebApplication1
 {
@@ -20,7 +21,6 @@ namespace WebApplication1
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddEnvironmentVariables();
                 Configuration = builder.Build();
-                System.Diagnostics.Debug.Write("&^%^&%&%^&%&%^&%^&%^&%^&%");
                 System.Diagnostics.Debug.Write(Configuration["DBInfo:ConnectionString"]);
 
 
@@ -59,6 +59,7 @@ namespace WebApplication1
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
+           
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
